@@ -1,0 +1,33 @@
+name: Alive5 SMS
+author: RaghavOjha
+description: Send an SMS from your Alive5 business number and return the message and conversation IDs.
+branding:
+  icon: message-square
+  color: orange
+inputs:
+  api-key:
+    description: Alive5 API key. Store it in a GitHub Actions secret.
+    required: true
+  to:
+    description: Recipient phone number in E.164 format.
+    required: true
+  message:
+    description: SMS text to send.
+    required: true
+  from:
+    description: Alive5 business SMS number in E.164 format.
+    required: true
+  channel-id:
+    description: Alive5 channel ID associated with the sender number.
+    required: true
+  user-id:
+    description: Alive5 user ID of an agent assigned to the channel.
+    required: true
+outputs:
+  message-id:
+    description: Submitted message ID from data.data.message_id.
+  conversation-id:
+    description: Conversation ID from data.data.thread_id, or empty when absent.
+runs:
+  using: node24
+  main: index.js
