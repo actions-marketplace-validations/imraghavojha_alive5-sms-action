@@ -55,6 +55,7 @@ function writeOutput(name, value) {
 
 async function main() {
   const apiKey = input('api-key');
+  console.log(`::add-mask::${apiKey.replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A')}`);
   const to = input('to');
   const phonePattern = /^\+[1-9]\d{7,14}$/;
   if (!phonePattern.test(to)) {
